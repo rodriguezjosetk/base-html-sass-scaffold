@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = merge(common, {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'main.[contentHash].js',
+		filename: 'main.[contenthash].js',
 	},
 	module: {
 		rules: [
@@ -23,7 +23,7 @@ module.exports = merge(common, {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({ title: 'Hello! José Rodríguez' }),
-		new MiniCssExtractPlugin({ filename: "[name].[contentHash].css" }),
+		new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
 	],
 	mode: 'production'
 });
