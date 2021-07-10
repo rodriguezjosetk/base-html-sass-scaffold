@@ -1,15 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Example from './components/example';
+import { Nav, NavItem } from './components/nav';
 
-import './index.scss';
-const Root = () => {
-	return (
-		<Example />
-	);
-};
+import './styles/index.scss';
 
-let container = document.getElementById('root');
-let component = <Root />;
+const Root = () => (
+  <>
+    <Nav>
+      <NavItem href="#about">About</NavItem>
+      <NavItem href="#contact">Contact</NavItem>
+      <NavItem href="#projects">Projects</NavItem>
+      <NavItem href="#about-this-project">About this project</NavItem>
+    </Nav>
+    <main>
+      main content
+    </main>
+  </>
+);
+
+const container = document.getElementById('root');
+const component = <Root />;
 ReactDOM.render(component, container);

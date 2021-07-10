@@ -1,0 +1,54 @@
+.nav {
+	&__header {
+		display: flex;
+		align-items: center;
+		padding: .8rem;
+		background-color: black;
+	}
+
+	&__brand {
+		font-size: 1.3rem;
+		text-decoration: none;
+		color: $text-primary;
+		font-weight: 300;
+		margin-right: auto;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+	}
+
+	&-item {
+		padding: .5rem .75rem;
+		color: $gray-secondary;
+
+		a {
+			font-size: 1.1rem;
+			transition: color 100ms ease-in-out;
+			text-decoration: none;
+			font-weight: 600;
+
+			&:visited {
+				color: inherit;
+			}
+
+			&:hover,
+			&:focus,
+			&--active {
+				color: transparentize($text-primary, .15);
+				color: $text-primary;
+				outline: none;
+			}
+		}
+	}
+
+	&__menu-button {
+		background-color: transparent;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+}
