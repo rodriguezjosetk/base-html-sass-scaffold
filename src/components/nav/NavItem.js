@@ -1,9 +1,9 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { bool, string } from 'prop-types';
 
-const NavItem = ({ children, href }) => (
+const NavItem = ({ children, href, active }) => (
   <li className="nav-item">
-    <a href={href}>
+    <a href={href} aria-current={active}>
       {children}
     </a>
   </li>
@@ -12,6 +12,11 @@ const NavItem = ({ children, href }) => (
 NavItem.propTypes = {
   children: string.isRequired,
   href: string.isRequired,
+  active: bool,
+};
+
+NavItem.defaultProps = {
+  active: false,
 };
 
 export default NavItem;

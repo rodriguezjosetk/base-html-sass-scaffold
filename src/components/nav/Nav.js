@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, {
+  Children, cloneElement, useState, useEffect,
+} from 'react';
 import { node, arrayOf, oneOfType } from 'prop-types';
-import classNames from 'classnames';
 
 const namespace = 'nav';
 
 const Nav = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState('#');
+
+  useEffect(() => {
+    const updateLocation = () => {
+      setCurrentPage(window.location.hash);
+    };
+
+    window.addEventListener('hashchange', updateLocation);
+
+    return () => {
+      window.removeEventListener('hashchange', updateLocation);
+    };
+  });
 
   const MenuButton = () => (
     <button
@@ -18,9 +32,14 @@ const Nav = ({ children }) => {
 
   return (
     <header className={`${namespace}__header`}>
-      <a href="/" className={`${namespace}__brand`}>José Rodríguez</a>
+      <a href="/#" className={`${namespace}__brand`} aria-current={currentPage === ''}>José Rodríguez</a>
       <nav className={namespace} aria-label="Main navigation">
-        <ul>{children}</ul>
+        <ul>
+          {Children.map(
+            children,
+            (child) => cloneElement(child, { active: currentPage === child.props.href }),
+          )}
+        </ul>
       </nav>
       <MenuButton />
     </header>

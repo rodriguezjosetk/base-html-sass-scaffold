@@ -37,7 +37,7 @@
 
 			&:hover,
 			&:focus,
-			&--active {
+			&[aria-current="true"] {
 				color: transparentize($text-primary, .15);
 				color: $text-primary;
 				outline: none;
